@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registeration Page</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Registeration Page</h1>
+      <form action="/register" method="POST">
+        <div class="form-group">
+          <label for="userName">User Name:</label>
+          <input
+            type="text"
+            name="userName"
+            id="name"
+            placeholder="Enter Your Name..."
+            required
+          />
+
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter Password..."
+            required
+          />
+        </div>
+        <button type="submit" class="submit-btn">Register</button>
+      </form>
+    </div>
+  </body>
+</html>
