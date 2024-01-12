@@ -20,7 +20,7 @@ router.post("/register", async (req, res) => {
 
   const existingUser = await Users.findOne({ userName });
   if (existingUser) {
-    return res.status(400).send({ error: "User already exists" });
+    return res.render('error', { error: "User already exists" });
   } else {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new Users({ userName, password: hashedPassword });
@@ -33,12 +33,12 @@ router.post("/login", async (req, res) => {
   const { userName, password } = req.body;
   const user = await Users.findOne({ userName });
   if (!user) {
-    return res.status(400).send({ error: "User does not exist" });
+    return res.render('error', { error: "User does not exist" });
   }
 
   const passwordMatch = await bcrypt.compare(password, user.password);
   if (!passwordMatch) {
-    return res.status(400).send({ error: "Password is incorrect" });
+    return res.render('error',{ error: "Password is incorrect" });
   }
   res.cookie("token", "my-token", { httpOnly: true });
   res.redirect('/secure')
